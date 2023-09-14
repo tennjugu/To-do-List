@@ -1,0 +1,32 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "A simple To-do App that enables you to organize your tasks.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tennjugu/To-do-List.git"
+  },
+  "keywords": [
+    "to-do",
+    "task-manager"
+  ],
+  "author": "Jugu Tenerat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tennjugu/To-do-List/issues"
+  },
+  "homepage": "https://github.com/tennjugu/To-do-List#readme",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
+  }
+}
