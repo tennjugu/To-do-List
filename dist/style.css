@@ -8,14 +8,14 @@
 
 #content{
     height: 100vh;
-    width: 95vw;
+    width: 100vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
 
 .header{
-    background-color: yellow;
+    background-color: #57534e;
     grid-column: 1 / 6;
     text-align: center;
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 .sidebar {
-    background-color: rgb(77, 52, 52);
+    background-color: #78716c;
     grid-row: 2 / 7;
     grid-column: 1 / 2;
     display: flex;
@@ -34,14 +34,71 @@
 
 .taskclass {
     font-size: 1.3em;
-    border: 1px solid grey;
+    border: 1px solid black;
     padding: 7px;
     width: 80%;
     text-align: center;
+    transition: transform 0.3s;
 }
 
+.taskclass:hover{
+    transform: scale(1.05);
+    background-color: #57534e;
+    color: white;
+}
+
+
 .main{
-    background-color: aliceblue;
+    background-color: #d6d3d1;
     grid-row: 2 / 7;
     grid-column: 2 / 6;
+    padding: 1.5em;
+    overflow-y: auto;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    width: 25%;
+    border: 1px solid black;
+    padding: 0.9em;
+    background: white;
+}
+
+label {
+    background-color: #78716c;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    height: 1.5em;
+    text-align: center;
+    padding-top: 0.3em;
+}
+
+input {
+    border: 1px solid black;
+    padding: 0.2em;
+    height: 1.5em;
+}
+
+#description {
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+#priority {
+    margin-bottom: 1em;
+    border: 1px solid black;
+    height: 2em;
+}
+
+#formBtn{
+    background-color: #78716c;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+#formBtn:hover{
+    background-color: #57534e;
+    color: white;
 }
