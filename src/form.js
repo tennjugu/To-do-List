@@ -1,3 +1,4 @@
+import { addTasktoTasks} from "./tasks"
 
 const newTodo = () =>{
     const todoFormContainer = document.querySelector('.main')
@@ -104,8 +105,9 @@ const newTodo = () =>{
     
     form.addEventListener('submit', function(event){
         event.preventDefault()  
-        form.reset()
-        form.style.display = 'none'
+       addTasktoTasks()
+        // form.reset()
+        // form.style.display = 'none'
     })
 }
 
@@ -115,5 +117,21 @@ function addTask(){
         newTodo()
     })
 }
+
+// function addTask(){
+//     const main = document.querySelector('.main')
+//     const form = document.querySelector('#taskForm')
+
+//     const addBtn = document.querySelector('.addtask')
+//     addBtn.addEventListener('click',() => {
+//         if(main.contains(form)){
+//             main.removeChild(form)
+//         }
+//         else{
+//             newTodo()
+//         }
+        
+//     })
+// }
 
 export {addTask}

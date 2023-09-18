@@ -54,15 +54,18 @@
     grid-column: 2 / 6;
     padding: 1.5em;
     overflow-y: auto;
+    /* display: flex; */
 }
 
 form {
     display: flex;
     flex-flow: column;
     width: 25%;
+    min-width: 130px;
     border: 1px solid black;
     padding: 0.9em;
     background: white;
+    margin-bottom: 4px;
 }
 
 label {
@@ -101,4 +104,20 @@ input {
 #formBtn:hover{
     background-color: #57534e;
     color: white;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
 }
