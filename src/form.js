@@ -1,4 +1,5 @@
 import { addTasktoTasks} from "./tasks"
+import { taskLog } from "./taskLog"
 
 const newTodo = () =>{
     const todoFormContainer = document.querySelector('.main')
@@ -112,9 +113,19 @@ const newTodo = () =>{
 }
 
 function addTask(){
+    const mainSection = document.querySelector('.main')
+    const tableLog = document.querySelector('#taskTable')
     const addBtn = document.querySelector('.addtask')
+    const form = document.querySelector('form')
     addBtn.addEventListener('click',() => {
-        newTodo()
+        if(mainSection.contains(tableLog)){
+            mainSection.removeChild(tableLog)
+            newTodo()
+        }
+
+        if(mainSection.contains(form)){
+            form.reset()
+        }
     })
 }
 

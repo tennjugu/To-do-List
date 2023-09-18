@@ -5,7 +5,7 @@ taskLog()
 
 let allTasks = []
  retrieveLocalStore()
-//  todoItem()
+ todoItem()
 
  function Task(title, description, dueDate, time, priority){
     this.title = title
@@ -88,4 +88,4 @@ function retrieveLocalStore() {
 }
 
 
-export {addTasktoTasks}
+export {addTasktoTasks, retrieveLocalStore, todoItem}
