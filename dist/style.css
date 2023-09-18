@@ -108,12 +108,12 @@ input {
 
 
 table {
-    border-collapse: collapse;
+    border-collapse:separate;
     width: 100%;
 }
 
 th, td {
-    border: 1px solid #dddddd;
+    border: 1px solid #9f9696;
     text-align: center;
     padding: 8px;
 }
