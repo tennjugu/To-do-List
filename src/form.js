@@ -146,7 +146,7 @@ const newTodo = () =>{
     form.addEventListener('submit', function(event){
         event.preventDefault()  
         addTasktoTasks()
-        tableLog.style.display = 'block'
+        tableLog.style.display = 'inline-table'
         form.reset()
         todoFormContainer.removeChild(form)
     })

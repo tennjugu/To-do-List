@@ -1,5 +1,4 @@
 import { taskLog } from "./taskLog"
-// import { parseISO, compareAsc, format } from "date-fns"
 
 taskLog()
 
@@ -29,9 +28,10 @@ function todoItem(){
         todoDescription.classList.add('todo-Description')
         todoDescription.textContent = `${toDo.description}`
         todoDetails.appendChild(todoDescription)
-        let todoDueDate = document.createElement('td')
+        const todoDueDate = document.createElement('td')
         todoDueDate.classList.add('todo-DueDate')
-        todoDueDate.textContent = `${toDo.dueDate}`
+        const formattedDate = new Date(`${toDo.dueDate}`)
+        todoDueDate.textContent = formattedDate.toDateString()
         todoDetails.appendChild(todoDueDate)
         const todoTime = document.createElement('td')
         todoTime.classList.add('todo-Time')
@@ -45,7 +45,7 @@ function todoItem(){
     }
 }
 
- function addTasktoTasks() {
+function addTasktoTasks() {
     let title = document.querySelector('#title').value
     let description = document.querySelector('#description').value
     let dueDate = document.querySelector('#dueDate').value
@@ -53,8 +53,25 @@ function todoItem(){
     let priority = document.querySelector('#priority').value
     let newTodoEntry = new Task(title, description, dueDate, time, priority)
     allTasks.push(newTodoEntry)
+    sortTasks()
     createLocalStore()
     todoItem()
+}
+
+function sortTasks(){
+    allTasks.sort((a, b) => {
+        const firstDate = a.dueDate
+        const secondDate = b.dueDate
+        if(firstDate < secondDate){
+            return -1
+        }
+        if (firstDate > secondDate) {
+            return 1
+        } 
+        else {
+            return 0
+        }
+    })
 }
 
 function createLocalStore() {
