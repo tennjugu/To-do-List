@@ -8,7 +8,7 @@ function getFormTitle(){
     return titleLabel
 }
 
-function formTitleInput(){
+function getTitleInput(){
     const titleInput = document.createElement('input')
     titleInput.type = 'text'
     titleInput.id = 'title'
@@ -24,7 +24,7 @@ function getFormDescription(){
     return descriptionLabel
 }
 
-function formDescriptionInput(){
+function getDescriptionInput(){
     const descriptionTextarea = document.createElement('textarea')
     descriptionTextarea.id = 'description'
     descriptionTextarea.name = 'description'
@@ -41,7 +41,7 @@ function getFormDueDate(){
     return dueDateLabel
 }
 
-function formDueDateInput(){
+function getDueDateInput(){
     const dueDateInput = document.createElement('input')
     dueDateInput.type = 'date'
     dueDateInput.id = 'dueDate'
@@ -57,7 +57,7 @@ function getFormTime(){
     return timeLabel
     }
 
-function formTimeInput(){
+function getTimeInput(){
     const timeInput = document.createElement('input')
     timeInput.type = 'time'
     timeInput.id = 'time'
@@ -73,7 +73,7 @@ function getFormPriority(){
     return priorityLabel
 }
 
-function priorityOptions(){
+function getPriorityInput(){
     const prioritySelect = document.createElement('select')
     prioritySelect.id = 'priority'
     prioritySelect.name = 'priority'
@@ -98,7 +98,7 @@ function priorityOptions(){
     return prioritySelect
 }
     
-function formBtn(){
+function getFormInputs(){
     const submitButton = document.createElement('button')
     submitButton.id = 'formBtn'
     submitButton.type = 'submit'
@@ -112,16 +112,16 @@ const newTodo = () =>{
     const form = document.createElement('form')
     form.id = 'taskForm'
    const titleLabel = getFormTitle()
-   const titleInput = formTitleInput()
+   const titleInput = getTitleInput()
    const descriptionLabel = getFormDescription()
-   const descriptionTextarea = formDescriptionInput()
+   const descriptionTextarea = getDescriptionInput()
    const dueDateLabel = getFormDueDate()
-   const dueDateInput = formDueDateInput()
+   const dueDateInput = getDueDateInput()
    const timeLabel = getFormTime()
-   const timeInput = formTimeInput()
+   const timeInput = getTimeInput()
    const priorityLabel = getFormPriority()
-   const selectOption = priorityOptions()
-   const formButton = formBtn()
+   const selectOption = getPriorityInput()
+   const formButton = getFormInputs()
     form.appendChild(titleLabel)
     form.appendChild(titleInput)
     form.appendChild(descriptionLabel)
