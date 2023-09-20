@@ -1,7 +1,7 @@
 import { addTasktoTasks} from "./tasks"
 import { taskLog } from "./taskLog"
 
-function formTitle(){
+function getFormTitle(){
     const titleLabel = document.createElement('label')
     titleLabel.for = 'title'
     titleLabel.textContent = 'Title:'
@@ -17,7 +17,7 @@ function formTitleInput(){
     return titleInput
 }
 
-function formDescription(){
+function getFormDescription(){
     const descriptionLabel = document.createElement('label')
     descriptionLabel.for = 'description'
     descriptionLabel.textContent = 'Description:'
@@ -34,7 +34,7 @@ function formDescriptionInput(){
     return descriptionTextarea
 }
 
-function formDueDate(){
+function getFormDueDate(){
     const dueDateLabel = document.createElement('label')
     dueDateLabel.for = 'dueDate'
     dueDateLabel.textContent = 'Due Date:'
@@ -50,7 +50,7 @@ function formDueDateInput(){
     return dueDateInput
     }
 
-function formTime(){
+function getFormTime(){
     const timeLabel = document.createElement('label')
     timeLabel.for = 'time'
     timeLabel.textContent = 'Time:'
@@ -66,7 +66,7 @@ function formTimeInput(){
     return timeInput
 }
 
-function formPriority(){
+function getFormPriority(){
     const priorityLabel = document.createElement('label')
     priorityLabel.for = 'priority'
     priorityLabel.textContent = 'Priority:' 
@@ -111,15 +111,15 @@ const newTodo = () =>{
     const tableLog = document.querySelector('#taskTable')
     const form = document.createElement('form')
     form.id = 'taskForm'
-   const titleLabel = formTitle()
+   const titleLabel = getFormTitle()
    const titleInput = formTitleInput()
-   const descriptionLabel = formDescription()
+   const descriptionLabel = getFormDescription()
    const descriptionTextarea = formDescriptionInput()
-   const dueDateLabel = formDueDate()
+   const dueDateLabel = getFormDueDate()
    const dueDateInput = formDueDateInput()
-   const timeLabel = formTime()
+   const timeLabel = getFormTime()
    const timeInput = formTimeInput()
-   const priorityLabel = formPriority()
+   const priorityLabel = getFormPriority()
    const selectOption = priorityOptions()
    const formButton = formBtn()
     form.appendChild(titleLabel)
