@@ -3,6 +3,7 @@ import { taskLog } from "./taskLog"
 
 const newTodo = () =>{
     const todoFormContainer = document.querySelector('.main')
+    const tableLog = document.querySelector('#taskTable')
     
     const form = document.createElement('form')
     form.id = 'taskForm'
@@ -107,8 +108,10 @@ const newTodo = () =>{
     form.addEventListener('submit', function(event){
         event.preventDefault()  
        addTasktoTasks()
-        // form.reset()
-        // form.style.display = 'none'
+       tableLog.style.display = 'block'
+       form.reset()
+       todoFormContainer.removeChild(form)
+
     })
 }
 
@@ -116,33 +119,13 @@ function addTask(){
     const mainSection = document.querySelector('.main')
     const tableLog = document.querySelector('#taskTable')
     const addBtn = document.querySelector('.addtask')
-    const form = document.querySelector('form')
     addBtn.addEventListener('click',() => {
         if(mainSection.contains(tableLog)){
-            mainSection.removeChild(tableLog)
+            tableLog.style.display = 'none'
             newTodo()
-        }
-
-        if(mainSection.contains(form)){
-            form.reset()
         }
     })
 }
 
-// function addTask(){
-//     const main = document.querySelector('.main')
-//     const form = document.querySelector('#taskForm')
-
-//     const addBtn = document.querySelector('.addtask')
-//     addBtn.addEventListener('click',() => {
-//         if(main.contains(form)){
-//             main.removeChild(form)
-//         }
-//         else{
-//             newTodo()
-//         }
-        
-//     })
-// }
 
 export {addTask}

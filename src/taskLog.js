@@ -1,5 +1,4 @@
 
-
 // table for storing inputs
 
 const taskLog = () =>{
