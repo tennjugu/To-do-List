@@ -30,8 +30,7 @@ function todoItem(){
         todoDetails.appendChild(todoDescription)
         const todoDueDate = document.createElement('td')
         todoDueDate.classList.add('todo-DueDate')
-        const formattedDate = new Date(`${toDo.dueDate}`)
-        todoDueDate.textContent = formattedDate.toDateString()
+        todoDueDate.textContent = new Date(`${toDo.dueDate}`).toDateString()
         todoDetails.appendChild(todoDueDate)
         const todoTime = document.createElement('td')
         todoTime.classList.add('todo-Time')
@@ -53,26 +52,38 @@ function addTasktoTasks() {
     let priority = document.querySelector('#priority').value
     let newTodoEntry = new Task(title, description, dueDate, time, priority)
     allTasks.push(newTodoEntry)
-    sortTasks()
+    sortTasksDate()
     createLocalStore()
     todoItem()
 }
 
-function sortTasks(){
+function sortTasksDate() {
     allTasks.sort((a, b) => {
-        const firstDate = a.dueDate
-        const secondDate = b.dueDate
-        if(firstDate < secondDate){
-            return -1
+        const firstDate = a.dueDate;
+        const secondDate = b.dueDate;
+
+        if (firstDate < secondDate) {
+            return -1;
         }
         if (firstDate > secondDate) {
-            return 1
-        } 
-        else {
-            return 0
+            return 1;
         }
-    })
+        if (firstDate === secondDate) {
+            const firstTime = a.time;
+            const secondTime = b.time;
+
+            if (firstTime < secondTime) {
+                return -1;
+            }
+            if (firstTime > secondTime) {
+                return 1;
+            }
+            return 0;
+        }
+    });
 }
+
+
 
 function createLocalStore() {
     localStorage.setItem('allTasks', JSON.stringify(allTasks))
