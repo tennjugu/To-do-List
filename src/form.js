@@ -118,7 +118,7 @@ const newTodo = () =>{
     const tableLog = document.querySelector('#taskTable')
     const form = document.createElement('form')
     form.id = 'taskForm'
-    const CloseBtn = getCancelBtn()
+    const cancelBtn = getCancelBtn()
     const titleLabel = getFormTitle()
     const titleInput = getTitleInput()
     const descriptionLabel = getFormDescription()
@@ -130,7 +130,7 @@ const newTodo = () =>{
     const priorityLabel = getFormPriority()
     const selectOption = getPriorityInput()
     const formButton = getFormInputs()
-    form.appendChild(CloseBtn)
+    form.appendChild(cancelBtn)
     form.appendChild(titleLabel)
     form.appendChild(titleInput)
     form.appendChild(descriptionLabel)
@@ -150,7 +150,7 @@ const newTodo = () =>{
         form.reset()
         todoFormContainer.removeChild(form)
     })
-    CloseBtn.addEventListener('click', () =>{
+    cancelBtn.addEventListener('click', () =>{
         todoFormContainer.removeChild(form)
         tableLog.style.display = 'inline-table'
         form.reset()
@@ -162,15 +162,13 @@ function addTask(){
     const tableLog = document.querySelector('#taskTable')
     const addBtn = document.querySelector('.addtask')
     addBtn.addEventListener('click',() => {
-        const form = document.getElementById('taskForm')
-        if(form){
-            mainSection.removeChild(form)
-            console.log('hi')
+        const hasForm = document.getElementById('taskForm')
+        if(hasForm){
+            mainSection.removeChild(hasForm)
         }
         if(mainSection.contains(tableLog)){
             tableLog.style.display = 'none'
             newTodo()
-            console.log('hello')
         }
     })
 }
