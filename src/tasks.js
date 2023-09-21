@@ -3,10 +3,10 @@ import { taskLog } from "./taskLog"
 taskLog()
 
 let allTasks = []
- retrieveLocalStore()
- todoItem()
+    retrieveLocalStore()
+    todoItem()
 
- function Task(title, description, dueDate, time, priority){
+function Task(title, description, dueDate, time, priority){
     this.title = title
     this.description = description
     this.dueDate = dueDate
@@ -82,8 +82,6 @@ function sortTasksDate() {
         }
     });
 }
-
-
 
 function createLocalStore() {
     localStorage.setItem('allTasks', JSON.stringify(allTasks))
