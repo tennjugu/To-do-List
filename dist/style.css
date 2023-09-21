@@ -57,6 +57,7 @@ form {
     padding: 0.9em;
     background: white;
     margin-bottom: 4px;
+    padding-top: 0.1em;
 }
 label {
     background-color: #78716c;
@@ -67,7 +68,6 @@ label {
     text-align: center;
     padding-top: 0.3em;
 }
-
 input {
     border: 1px solid black;
     padding: 0.2em;
@@ -106,4 +106,22 @@ th {
 .todo-details:hover, .todo-details:focus{
     background-color: #57534e;
     color: white;
+}
+#cancel{
+    text-align: end;
+    padding-top: 0.2em;
+    margin: 0;
+}
+#cancel{
+    text-align: end;
+    padding-top: 0.2em;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    transition: transform 0.3s;
+}
+#cancel:hover, #cancel:focus{
+    color: red;
+    transform: scale(1.01);
 }

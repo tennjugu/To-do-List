@@ -1,13 +1,12 @@
 import { taskLog } from "./taskLog"
-// import { parseISO, compareAsc, format } from "date-fns"
 
 taskLog()
 
 let allTasks = []
- retrieveLocalStore()
- todoItem()
+    retrieveLocalStore()
+    todoItem()
 
- function Task(title, description, dueDate, time, priority){
+function Task(title, description, dueDate, time, priority){
     this.title = title
     this.description = description
     this.dueDate = dueDate
@@ -29,9 +28,9 @@ function todoItem(){
         todoDescription.classList.add('todo-Description')
         todoDescription.textContent = `${toDo.description}`
         todoDetails.appendChild(todoDescription)
-        let todoDueDate = document.createElement('td')
+        const todoDueDate = document.createElement('td')
         todoDueDate.classList.add('todo-DueDate')
-        todoDueDate.textContent = `${toDo.dueDate}`
+        todoDueDate.textContent = new Date(`${toDo.dueDate}`).toDateString()
         todoDetails.appendChild(todoDueDate)
         const todoTime = document.createElement('td')
         todoTime.classList.add('todo-Time')
@@ -45,7 +44,7 @@ function todoItem(){
     }
 }
 
- function addTasktoTasks() {
+function addTasktoTasks() {
     let title = document.querySelector('#title').value
     let description = document.querySelector('#description').value
     let dueDate = document.querySelector('#dueDate').value
@@ -53,8 +52,35 @@ function todoItem(){
     let priority = document.querySelector('#priority').value
     let newTodoEntry = new Task(title, description, dueDate, time, priority)
     allTasks.push(newTodoEntry)
+    sortTasksDate()
     createLocalStore()
     todoItem()
+}
+
+function sortTasksDate() {
+    allTasks.sort((a, b) => {
+        const firstDate = a.dueDate;
+        const secondDate = b.dueDate;
+
+        if (firstDate < secondDate) {
+            return -1;
+        }
+        if (firstDate > secondDate) {
+            return 1;
+        }
+        if (firstDate === secondDate) {
+            const firstTime = a.time;
+            const secondTime = b.time;
+
+            if (firstTime < secondTime) {
+                return -1;
+            }
+            if (firstTime > secondTime) {
+                return 1;
+            }
+            return 0;
+        }
+    });
 }
 
 function createLocalStore() {
@@ -65,5 +91,6 @@ function retrieveLocalStore() {
     const storedTasks = JSON.parse(localStorage.getItem('allTasks')) || []
     allTasks = storedTasks
 }
+
 
 export {addTasktoTasks, retrieveLocalStore, todoItem}

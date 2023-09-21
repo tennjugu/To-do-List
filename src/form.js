@@ -1,6 +1,13 @@
 import { addTasktoTasks} from "./tasks"
 import { taskLog } from "./taskLog"
 
+function getCancelBtn(){
+    const cancel = document.createElement('h3')
+    cancel.id = 'cancel'
+    cancel.innerText = '✖'
+    return cancel
+}
+
 function getFormTitle(){
     const titleLabel = document.createElement('label')
     titleLabel.for = 'title'
@@ -111,17 +118,19 @@ const newTodo = () =>{
     const tableLog = document.querySelector('#taskTable')
     const form = document.createElement('form')
     form.id = 'taskForm'
-   const titleLabel = getFormTitle()
-   const titleInput = getTitleInput()
-   const descriptionLabel = getFormDescription()
-   const descriptionTextarea = getDescriptionInput()
-   const dueDateLabel = getFormDueDate()
-   const dueDateInput = getDueDateInput()
-   const timeLabel = getFormTime()
-   const timeInput = getTimeInput()
-   const priorityLabel = getFormPriority()
-   const selectOption = getPriorityInput()
-   const formButton = getFormInputs()
+    const cancelBtn = getCancelBtn()
+    const titleLabel = getFormTitle()
+    const titleInput = getTitleInput()
+    const descriptionLabel = getFormDescription()
+    const descriptionTextarea = getDescriptionInput()
+    const dueDateLabel = getFormDueDate()
+    const dueDateInput = getDueDateInput()
+    const timeLabel = getFormTime()
+    const timeInput = getTimeInput()
+    const priorityLabel = getFormPriority()
+    const selectOption = getPriorityInput()
+    const formButton = getFormInputs()
+    form.appendChild(cancelBtn)
     form.appendChild(titleLabel)
     form.appendChild(titleInput)
     form.appendChild(descriptionLabel)
@@ -134,13 +143,18 @@ const newTodo = () =>{
     form.appendChild(selectOption)
     form.appendChild(formButton)
     todoFormContainer.appendChild(form)
-form.addEventListener('submit', function(event){
-    event.preventDefault()  
-   addTasktoTasks()
-   tableLog.style.display = 'block'
-   form.reset()
-   todoFormContainer.removeChild(form)
-})
+    form.addEventListener('submit', function(event){
+        event.preventDefault()  
+        addTasktoTasks()
+        tableLog.style.display = 'inline-table'
+        form.reset()
+        todoFormContainer.removeChild(form)
+    })
+    cancelBtn.addEventListener('click', () =>{
+        todoFormContainer.removeChild(form)
+        tableLog.style.display = 'inline-table'
+        form.reset()
+    })
 }
 
 function addTask(){
@@ -148,12 +162,15 @@ function addTask(){
     const tableLog = document.querySelector('#taskTable')
     const addBtn = document.querySelector('.addtask')
     addBtn.addEventListener('click',() => {
+        const hasForm = document.getElementById('taskForm')
+        if(hasForm){
+            mainSection.removeChild(hasForm)
+        }
         if(mainSection.contains(tableLog)){
             tableLog.style.display = 'none'
             newTodo()
         }
     })
 }
-
 
 export {addTask}
