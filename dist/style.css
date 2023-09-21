@@ -107,16 +107,12 @@ th {
     background-color: #57534e;
     color: white;
 }
-#cancel{
+#cancel {
     text-align: end;
     padding-top: 0.2em;
     margin: 0;
-}
-#cancel{
-    text-align: end;
-    padding-top: 0.2em;
-    margin: 0;
-    width: 100%;
+    margin-left: auto;
+    width: max-content;
     display: flex;
     justify-content: flex-end;
     transition: transform 0.3s;

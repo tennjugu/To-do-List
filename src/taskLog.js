@@ -26,7 +26,6 @@ const taskLog = () =>{
     table.appendChild(tbody)
     let main = document.querySelector('.main')
     main.appendChild(table)
-    return taskLog
 }
 
 export {taskLog}

@@ -2,7 +2,7 @@ import { addTasktoTasks} from "./tasks"
 import { taskLog } from "./taskLog"
 
 function getCancelBtn(){
-    const cancel = document.createElement('h3')
+    const cancel = document.createElement('span')
     cancel.id = 'cancel'
     cancel.innerText = '✖'
     return cancel
