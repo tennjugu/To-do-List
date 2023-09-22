@@ -1,5 +1,4 @@
 import { addTasktoTasks} from "./tasks"
-import { taskLog } from "./taskLog"
 
 function getCancelBtn(){
     const cancel = document.createElement('span')
@@ -8,9 +7,9 @@ function getCancelBtn(){
     return cancel
 }
 
-function getFormTitle(){
+function getFormTitle() {
     const titleLabel = document.createElement('label')
-    titleLabel.for = 'title'
+    titleLabel.htmlFor = 'title'
     titleLabel.textContent = 'Title:'
     return titleLabel
 }
@@ -24,9 +23,9 @@ function getTitleInput(){
     return titleInput
 }
 
-function getFormDescription(){
+function getFormDescription() {
     const descriptionLabel = document.createElement('label')
-    descriptionLabel.for = 'description'
+    descriptionLabel.htmlFor = 'description'
     descriptionLabel.textContent = 'Description:'
     return descriptionLabel
 }
@@ -41,9 +40,9 @@ function getDescriptionInput(){
     return descriptionTextarea
 }
 
-function getFormDueDate(){
+function getFormDueDate() {
     const dueDateLabel = document.createElement('label')
-    dueDateLabel.for = 'dueDate'
+    dueDateLabel.htmlFor = 'dueDate'
     dueDateLabel.textContent = 'Due Date:'
     return dueDateLabel
 }
@@ -57,12 +56,12 @@ function getDueDateInput(){
     return dueDateInput
     }
 
-function getFormTime(){
+function getFormTime() {
     const timeLabel = document.createElement('label')
-    timeLabel.for = 'time'
+    timeLabel.htmlFor = 'time'
     timeLabel.textContent = 'Time:'
     return timeLabel
-    }
+}
 
 function getTimeInput(){
     const timeInput = document.createElement('input')
@@ -73,10 +72,10 @@ function getTimeInput(){
     return timeInput
 }
 
-function getFormPriority(){
+function getFormPriority() {
     const priorityLabel = document.createElement('label')
-    priorityLabel.for = 'priority'
-    priorityLabel.textContent = 'Priority:' 
+    priorityLabel.htmlFor = 'priority'
+    priorityLabel.textContent = 'Priority:'
     return priorityLabel
 }
 
@@ -116,6 +115,8 @@ function getFormInputs(){
 const newTodo = () =>{
     const todoFormContainer = document.querySelector('.main')
     const tableLog = document.querySelector('#taskTable')
+    const viewAllTasks = document.querySelector('.alltasks')
+    const addBtn = document.querySelector('.addtask')
     const form = document.createElement('form')
     form.id = 'taskForm'
     const cancelBtn = getCancelBtn()
@@ -148,18 +149,27 @@ const newTodo = () =>{
         addTasktoTasks()
         tableLog.style.display = 'inline-table'
         form.reset()
+        addBtn.style.backgroundColor = '#78716c'
+        addBtn.style.color = 'black'
+        viewAllTasks.style.backgroundColor = '#57534e'
+        viewAllTasks.style.color = 'white'
         todoFormContainer.removeChild(form)
     })
     cancelBtn.addEventListener('click', () =>{
         todoFormContainer.removeChild(form)
         tableLog.style.display = 'inline-table'
         form.reset()
+        addBtn.style.backgroundColor = '#78716c'
+        addBtn.style.color = 'black'
+        viewAllTasks.style.backgroundColor = '#57534e'
+        viewAllTasks.style.color = 'white'
     })
 }
 
-function addTask(){
+function addTaskTab(){
     const mainSection = document.querySelector('.main')
     const tableLog = document.querySelector('#taskTable')
+    const viewAllTasks = document.querySelector('.alltasks')
     const addBtn = document.querySelector('.addtask')
     addBtn.addEventListener('click',() => {
         const hasForm = document.getElementById('taskForm')
@@ -169,8 +179,12 @@ function addTask(){
         if(mainSection.contains(tableLog)){
             tableLog.style.display = 'none'
             newTodo()
+            addBtn.style.backgroundColor = '#57534e'
+            addBtn.style.color = 'white'
+            viewAllTasks.style.backgroundColor = '#78716c'
+            viewAllTasks.style.color = 'black'
         }
     })
 }
 
-export {addTask}
+export {addTaskTab}
