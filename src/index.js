@@ -1,5 +1,5 @@
-import { addTask } from "./form";
+import { addTaskTab } from "./form";
 import { retrieveLocalStore } from "./tasks";
 
-    retrieveLocalStore()
-    addTask()
+retrieveLocalStore()
+addTaskTab()
