@@ -1,16 +1,15 @@
 import { addTasktoTasks} from "./tasks"
-import { taskLog } from "./taskLog"
 
 function getCancelBtn(){
-    const cancel = document.createElement('h3')
+    const cancel = document.createElement('span')
     cancel.id = 'cancel'
     cancel.innerText = '✖'
     return cancel
 }
 
-function getFormTitle(){
+function getFormTitle() {
     const titleLabel = document.createElement('label')
-    titleLabel.for = 'title'
+    titleLabel.htmlFor = 'title'
     titleLabel.textContent = 'Title:'
     return titleLabel
 }
@@ -24,9 +23,9 @@ function getTitleInput(){
     return titleInput
 }
 
-function getFormDescription(){
+function getFormDescription() {
     const descriptionLabel = document.createElement('label')
-    descriptionLabel.for = 'description'
+    descriptionLabel.htmlFor = 'description'
     descriptionLabel.textContent = 'Description:'
     return descriptionLabel
 }
@@ -41,9 +40,9 @@ function getDescriptionInput(){
     return descriptionTextarea
 }
 
-function getFormDueDate(){
+function getFormDueDate() {
     const dueDateLabel = document.createElement('label')
-    dueDateLabel.for = 'dueDate'
+    dueDateLabel.htmlFor = 'dueDate'
     dueDateLabel.textContent = 'Due Date:'
     return dueDateLabel
 }
@@ -57,12 +56,12 @@ function getDueDateInput(){
     return dueDateInput
     }
 
-function getFormTime(){
+function getFormTime() {
     const timeLabel = document.createElement('label')
-    timeLabel.for = 'time'
+    timeLabel.htmlFor = 'time'
     timeLabel.textContent = 'Time:'
     return timeLabel
-    }
+}
 
 function getTimeInput(){
     const timeInput = document.createElement('input')
@@ -73,10 +72,10 @@ function getTimeInput(){
     return timeInput
 }
 
-function getFormPriority(){
+function getFormPriority() {
     const priorityLabel = document.createElement('label')
-    priorityLabel.for = 'priority'
-    priorityLabel.textContent = 'Priority:' 
+    priorityLabel.htmlFor = 'priority'
+    priorityLabel.textContent = 'Priority:'
     return priorityLabel
 }
 
@@ -85,23 +84,15 @@ function getPriorityInput(){
     prioritySelect.id = 'priority'
     prioritySelect.name = 'priority'
     prioritySelect.required = true
-    const optionOne = document.createElement('option')
-    optionOne.value = 'high'
-    optionOne.textContent = 'High'
-    const optionTwo = document.createElement('option')
-    optionTwo.value = 'medium'
-    optionTwo.textContent = 'Medium'
-    const optionThree = document.createElement('option')
-    optionThree.value = 'low'
-    optionThree.textContent = 'Low'
-    const optionFour = document.createElement('option')
-    optionFour.value = 'none'
-    optionFour.textContent = 'none'
-    optionFour.selected = 'true'
-    prioritySelect.appendChild(optionOne)
-    prioritySelect.appendChild(optionTwo)
-    prioritySelect.appendChild(optionThree)
-    prioritySelect.appendChild(optionFour)  
+    // const optionOne = document.createElement('option')
+    const options = ['High', 'Medium', 'Low', 'None']
+    for (let i=0; i < options.length; i++ ){
+        let selection = document.createElement('option')
+        selection.value = options[i].toLocaleLowerCase()
+        selection.textContent = options[i]
+        selection.selected = options[3]
+        prioritySelect.appendChild(selection)
+    }
     return prioritySelect
 }
     
@@ -109,13 +100,12 @@ function getFormInputs(){
     const submitButton = document.createElement('button')
     submitButton.id = 'formBtn'
     submitButton.type = 'submit'
-    submitButton.textContent = 'Add Task'
+    submitButton.textContent = 'Add'
     return submitButton
 }
 
 const newTodo = () =>{
-    const todoFormContainer = document.querySelector('.main')
-    const tableLog = document.querySelector('#taskTable')
+    const todoFormContainer = document.querySelector('.sidebar')
     const form = document.createElement('form')
     form.id = 'taskForm'
     const cancelBtn = getCancelBtn()
@@ -130,47 +120,35 @@ const newTodo = () =>{
     const priorityLabel = getFormPriority()
     const selectOption = getPriorityInput()
     const formButton = getFormInputs()
-    form.appendChild(cancelBtn)
-    form.appendChild(titleLabel)
-    form.appendChild(titleInput)
-    form.appendChild(descriptionLabel)
-    form.appendChild(descriptionTextarea)
-    form.appendChild(dueDateLabel)
-    form.appendChild(dueDateInput)
-    form.appendChild(timeLabel)
-    form.appendChild(timeInput)
-    form.appendChild(priorityLabel)
-    form.appendChild(selectOption)
-    form.appendChild(formButton)
+    const tableData = [cancelBtn, titleLabel, titleInput, descriptionLabel, descriptionTextarea, dueDateLabel, 
+        dueDateInput, timeLabel, timeInput, priorityLabel, selectOption, formButton]
+    for (let i=0; i < tableData.length; i++){
+        form.appendChild(tableData[i])
+    }
     todoFormContainer.appendChild(form)
     form.addEventListener('submit', function(event){
         event.preventDefault()  
         addTasktoTasks()
-        tableLog.style.display = 'inline-table'
         form.reset()
-        todoFormContainer.removeChild(form)
     })
     cancelBtn.addEventListener('click', () =>{
         todoFormContainer.removeChild(form)
-        tableLog.style.display = 'inline-table'
         form.reset()
     })
 }
 
-function addTask(){
-    const mainSection = document.querySelector('.main')
-    const tableLog = document.querySelector('#taskTable')
+function addTaskTab(){
     const addBtn = document.querySelector('.addtask')
     addBtn.addEventListener('click',() => {
+        const sideBar = document.querySelector('.sidebar')
         const hasForm = document.getElementById('taskForm')
-        if(hasForm){
-            mainSection.removeChild(hasForm)
+        if(sideBar.contains(hasForm)){
+            hasForm.reset()
         }
-        if(mainSection.contains(tableLog)){
-            tableLog.style.display = 'none'
+         else{
             newTodo()
-        }
+         }
     })
 }
 
-export {addTask}
+export {addTaskTab}
